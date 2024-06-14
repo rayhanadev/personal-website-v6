@@ -1,0 +1,142 @@
+---
+import { ViewTransitions } from "astro:transitions";
+
+import "styles/global.css";
+
+import { Head } from "astro-capo";
+import { SEO } from "astro-seo";
+
+import NavBar from "components/NavBar.astro";
+import Footer from "components/Footer.astro";
+
+const { title, description, og, twitter } = Astro.props;
+
+export interface Props {
+  title: string;
+  description: string;
+  og?: {
+    title: string;
+    description: string;
+  };
+  twitter?: {
+    title: string;
+    description: string;
+  };
+}
+---
+
+<!doctype html>
+<html lang="en" class="scrollbar-root">
+  <Head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "http://www.schema.org",
+        "@type": "person",
+        name: "Rayhan Noufal Arayilakath",
+        alternateName: "rayhanadev",
+        description: "Developer",
+        disambiguatingDescription: "Software Engineer",
+        jobTitle: "Software Engineer",
+        gender: "male",
+        url: "https://www.rayhanadev.com",
+        sameAs: [
+          "https://github.com/rayhanadev",
+          "https://linkedin.com/in/rayhanadev",
+          "https://twitter.com/rayhanadev",
+        ],
+        image: "https://www.rayhanadev.com/headshot.png",
+        address: {
+          "@type": "PostalAddress",
+          addressRegion: "Texas",
+          addressCountry: "United States of America",
+        },
+        email: "me@rayhanadev.com",
+        birthDate: "2006-06-24",
+      })}
+    />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
+    <link rel="manifest" href="/manifest.json" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="#000000" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#111111" />
+
+    <meta name="msapplication-TileColor" content="#00aba9" />
+    <meta name="msapplication-TileImage" content="/mstile-150x150.png" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <meta
+      name="robots"
+      content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"
+    />
+
+    <SEO
+      title={title}
+      description={description}
+      canonical="https://www.rayhanadev.com"
+      openGraph={{
+        basic: {
+          type: "website",
+          title: og && og.title ? og.title : title,
+          image: `${import.meta.env.SITE}/opengraphimage.png`,
+        },
+        optional: {
+          description: og && og.description ? og.description : description,
+          locale: "en-US",
+          siteName: "rayhanadev.com",
+        },
+        image: {
+          alt: "Ray's cover image, with the text: Fullstack Web Developer and Software Engineer. Contact me at contact@rayhanadev.com.",
+          type: "image/png",
+        },
+      }}
+      twitter={{
+        title: twitter && twitter.title ? twitter.title : title,
+        description:
+          twitter && twitter.description ? twitter.description : description,
+        image: `${import.meta.env.SITE}/twittercard.png`,
+        imageAlt:
+          "Ray's cover image, with the text: Fullstack Web Developer and Software Engineer. Contact me at contact@rayhanadev.com.",
+        card: "summary_large_image",
+        site: "rayhanadev",
+        creator: "rayhanadev",
+      }}
+    />
+
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="RSS"
+      href="https://www.rayhanadev.com/feed.xml"
+    />
+
+    <meta name="author" content="Rayhan Noufal Arayilakath" />
+    <meta
+      name="keywords"
+      content="ray, rayhan, noufal, arayilakath, rayhan noufal, rayhan arayilakath, rayhan noufal arayilakath, ray arayilakath, rayhanadev, furret, furret developer, furret.css, furret.dev, furret.codes, fullstack web, fullstack developer, fullstack, developer, software, software engineer, replit"
+    />
+
+    <ViewTransitions />
+  </Head>
+  <body class="flex flex-col min-h-[850px] pt-16">
+    <NavBar />
+    <main
+      class="flex flex-col items-start justify-start w-[500px] h-full mx-auto pt-16 min-h-16"
+    >
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -1,12 +1,44 @@
 ---
-import Layout from "layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+
+import Layout from "layouts/InfoLayout.astro";
+
+const entries = await getCollection("blog");
+
+dayjs.extend(utc);
 
 export const prerender = true;
 ---
 
 <Layout
-  title="Home | Ray Arayilakath"
+  header="my blog"
+  title="Blog | Ray Arayilakath"
   description="Software Engineer based in the United States. I have 5+ years of experience with companies like Replit and Deel."
 >
-  <p>WIP</p>
+  {
+    entries.map(async ({ slug, data, render }) => {
+      const { remarkPluginFrontmatter } = await render();
+
+      return (
+        <a href={`/blog/${slug}`} class="w-full">
+          <div class="group flex flex-row items-start justify-between">
+            <span class="text-lg leading-normal group-hover:text-muted-foreground">
+              {data.title}
+            </span>
+            <time
+              class="text-sm text-zinc-400 group-hover:text-zinc-300 italic"
+              datetime={remarkPluginFrontmatter.lastModified}
+            >
+              {dayjs(remarkPluginFrontmatter.lastModified)
+                .utc()
+                .format("MM/DD/YYYY")}
+            </time>
+          </div>
+        </a>
+      );
+    })
+  }
 </Layout>

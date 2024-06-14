@@ -1,6 +1,4 @@
 ---
-export interface Props {};
-
 const links = [
   { href: "/", text: "home" },
   { href: "/blog", text: "blog" },
@@ -8,27 +6,36 @@ const links = [
 ];
 
 const {} = Astro.props;
+
+export interface Props {}
 ---
 
 <nav class="flex flex-row items-end justify-start w-[500px] mx-auto">
   <ul class="flex flex-row items-start justify-start gap-3.5 ml-auto">
-    {links.map(({ text, href }) => {
-      const active = Astro.url.pathname === href;
-      return (
-        <li>
-          <a class:list={[
-            "font-sans",
-            "text-base",
-            "leading-normal",
-            "hover:text-foreground",
-            (!active && "text-muted-foreground"),
-            (active && "text-foreground"),
-            (active && "underline"),
-            (active && "decoration-muted-foreground"),
-            (active && "hover:decoration-foreground")
-          ]} href={href}>{text}</a>
-        </li>
-      )
-    })}
+    {
+      links.map(({ text, href }) => {
+        const active = Astro.url.pathname === href;
+        return (
+          <li>
+            <a
+              class:list={[
+                "font-sans",
+                "text-base",
+                "leading-normal",
+                "hover:text-foreground",
+                !active && "text-zinc-400",
+                active && "text-foreground",
+                active && "underline",
+                active && "decoration-zinc-400",
+                active && "hover:decoration-foreground",
+              ]}
+              href={href}
+            >
+              {text}
+            </a>
+          </li>
+        );
+      })
+    }
   </ul>
 </nav>

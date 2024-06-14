@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 
 import headshot from "assets/headshot.webp";
-import Layout from "layouts/Layout.astro";
+import Layout from "layouts/HomeLayout.astro";
 
 export const prerender = true;
 ---
@@ -21,7 +21,9 @@ export const prerender = true;
       <h1 class="font-serif font-bold text-5xl leading-normal">
         ray arayilakath
       </h1>
-      <p class="text-lg leading-normal">software engineer | prev. replit</p>
+      <p class="text-lg leading-normal text-zinc-400">
+        software engineer | prev. replit
+      </p>
     </div>
   </div>
   <div class="flex flex-col items-start justify-start mt-5">
@@ -46,7 +48,7 @@ export const prerender = true;
         academy. see more of my work in{" "}
         <a
           href="/work"
-          class="underline decoration-muted-foreground hover:decoration-foreground"
+          class="underline decoration-zinc-400 hover:decoration-foreground"
           >my resume</a
         >.
       </p>
@@ -57,13 +59,13 @@ export const prerender = true;
         }
         <a
           href="/blog"
-          class="underline decoration-muted-foreground hover:decoration-foreground"
+          class="underline decoration-zinc-400 hover:decoration-foreground"
           >my blog</a
         >{" "}
         or see{" "}
         <a
           href="https://github.com/rayhanadev"
-          class="underline decoration-muted-foreground hover:decoration-foreground"
+          class="underline decoration-zinc-400 hover:decoration-foreground"
           >my projects</a
         >{" "}
         and follow me on my socials.

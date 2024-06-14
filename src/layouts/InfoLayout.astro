@@ -9,9 +9,12 @@ import { SEO } from "astro-seo";
 import NavBar from "components/NavBar.astro";
 import Footer from "components/Footer.astro";
 
+const { title, description, header, og, twitter } = Astro.props;
+
 export interface Props {
   title: string;
   description: string;
+  header: string;
   og?: {
     title: string;
     description: string;
@@ -21,8 +24,6 @@ export interface Props {
     description: string;
   };
 }
-
-const { title, description, og, twitter } = Astro.props;
 ---
 
 <!doctype html>
@@ -131,6 +132,9 @@ const { title, description, og, twitter } = Astro.props;
     <ViewTransitions />
   </Head>
   <body class="flex flex-col min-h-[850px] pt-16">
+    <h1 class="font-serif font-bold text-3xl leading-normal w-[500px] mx-auto">
+      {header}
+    </h1>
     <NavBar />
     <main
       class="flex flex-col items-start justify-start w-[500px] h-full mx-auto pt-16 min-h-16"
