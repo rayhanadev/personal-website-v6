@@ -1,12 +1,22 @@
 ---
-export const prerender = true;
+import { getCollection } from "astro:content";
 
 import Layout from "layouts/Layout.astro";
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const blogEntries = await getCollection("blog");
+  return blogEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
 ---
 
 <Layout
-	title="Home | Ray Arayilakath"
-	description="Software Engineer based in the United States. I have 5+ years of experience with companies like Replit and Deel."
+  title="Home | Ray Arayilakath"
+  description="Software Engineer based in the United States. I have 5+ years of experience with companies like Replit and Deel."
 >
-	<p>WIP</p>
+  <p>WIP</p>
 </Layout>
