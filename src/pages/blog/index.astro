@@ -6,6 +6,8 @@ import utc from "dayjs/plugin/utc";
 
 import Layout from "layouts/InfoLayout.astro";
 
+import Link from "components/Link.astro";
+
 const entries = await getCollection("blog");
 
 dayjs.extend(utc);
@@ -23,8 +25,8 @@ export const prerender = true;
       const { remarkPluginFrontmatter } = await render();
 
       return (
-        <a href={`/blog/${slug}`} class="w-full">
-          <div class="group flex flex-row items-start justify-between">
+        <Link href={`/blog/${slug}`} class="w-full">
+          <div class="group flex flex-row items-center justify-between">
             <span class="text-lg leading-normal group-hover:text-muted-foreground">
               {data.title}
             </span>
@@ -37,7 +39,7 @@ export const prerender = true;
                 .format("MM/DD/YYYY")}
             </time>
           </div>
-        </a>
+        </Link>
       );
     })
   }

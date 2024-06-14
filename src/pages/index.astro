@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 
 import headshot from "assets/headshot.webp";
 import Layout from "layouts/HomeLayout.astro";
+import Link from "components/Link.astro";
 
 export const prerender = true;
 ---
@@ -46,10 +47,10 @@ export const prerender = true;
         launch early anti-abuse initiatives and was a founding member of their
         anti-abuse team. i also helped teach ib computer science at westlake
         academy. see more of my work in{" "}
-        <a
+        <Link
           href="/work"
           class="underline decoration-zinc-400 hover:decoration-foreground"
-          >my resume</a
+          >my resume</Link
         >.
       </p>
 
@@ -57,16 +58,16 @@ export const prerender = true;
         for more information on my background and interests, feel free to read{
           " "
         }
-        <a
+        <Link
           href="/blog"
           class="underline decoration-zinc-400 hover:decoration-foreground"
-          >my blog</a
+          >my blog</Link
         >{" "}
         or see{" "}
-        <a
+        <Link
           href="https://github.com/rayhanadev"
           class="underline decoration-zinc-400 hover:decoration-foreground"
-          >my projects</a
+          >my projects</Link
         >{" "}
         and follow me on my socials.
       </p>

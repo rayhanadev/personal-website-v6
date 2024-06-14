@@ -4,7 +4,7 @@ const robotsTxt = `
 User-agent: *
 Allow: /
 
-User-agent:
+User-agent: *
 Disallow: /cdn-cgi/
 
 Sitemap: ${new URL("sitemap-index.xml", import.meta.env.SITE).href}

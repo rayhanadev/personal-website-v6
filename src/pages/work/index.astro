@@ -1,5 +1,9 @@
 ---
+import { getCollection } from "astro:content";
+
 import Layout from "layouts/InfoLayout.astro";
+
+const entries = await getCollection("work");
 
 export const prerender = true;
 ---
@@ -9,5 +13,29 @@ export const prerender = true;
   title="Work | Ray Arayilakath"
   description="Software Engineer based in the United States. I have 5+ years of experience with companies like Replit and Deel."
 >
-  <p>WIP</p>
+  <div class="flex flex-col items-start justify-start gap-8">
+    {
+      entries
+        .sort((a, b) => {
+          return a.data.order - b.data.order;
+        })
+        .map(async ({ data, render }) => {
+          const { Content } = await render();
+          return (
+            <div class="flex flex-col items-start justify-start gap-4">
+              <div class="flex flex-col items-start justify-start">
+                <h2 class="font-serif font-bold text-3xl leading-normal">
+                  {data.name}
+                </h2>
+                <p class="text-lg text-zinc-400 italic leading-normal">
+                  {data.title}, {data.duration}
+                </p>
+              </div>
+              <Content />
+            </div>
+          );
+        })
+    }
+    <div class="mb-8"></div>
+  </div>
 </Layout>
