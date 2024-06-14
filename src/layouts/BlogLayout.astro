@@ -12,7 +12,7 @@ import advancedFormat from "dayjs/plugin/advancedFormat";
 import Footer from "components/Footer.astro";
 import Link from "components/Link.astro";
 
-const { title, description, date, og, twitter } = Astro.props;
+const { title, description, date, slug, og, twitter } = Astro.props;
 
 dayjs.extend(utc);
 dayjs.extend(advancedFormat);
@@ -21,6 +21,7 @@ export interface Props {
   title: string;
   description: string;
   date: Date | string;
+  slug: string;
   og?: {
     title: string;
     description: string;
@@ -33,7 +34,7 @@ export interface Props {
 ---
 
 <!doctype html>
-<html lang="en" class="scrollbar-root">
+<html lang="en">
   <Head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -94,9 +95,9 @@ export interface Props {
       canonical="https://www.rayhanadev.com"
       openGraph={{
         basic: {
-          type: "website",
+          type: "article",
           title: og && og.title ? og.title : `${title} | Ray Arayilakath`,
-          image: `${import.meta.env.SITE}/opengraphimage.png`,
+          image: `${import.meta.env.SITE}/og/${slug}.png`,
         },
         optional: {
           description: og && og.description ? og.description : description,
@@ -104,8 +105,15 @@ export interface Props {
           siteName: "rayhanadev.com",
         },
         image: {
-          alt: "Ray's cover image, with the text: Fullstack Web Developer and Software Engineer. Contact me at contact@rayhanadev.com.",
+          alt: "Ray's cover image, with the text: Fullstack Web Developer and Software Engineer. Contact me at me@rayhanadev.com.",
           type: "image/png",
+        },
+        article: {
+          publishedTime: date.toString(),
+          modifiedTime: date.toString(),
+          authors: ["Rayhan Noufal Arayilakath"],
+          section: "Blog",
+          tags: ["rayhanadev", "ray arayilakath", "fullstack web developer"],
         },
       }}
       twitter={{
@@ -117,10 +125,10 @@ export interface Props {
           twitter && twitter.description ? twitter.description : description,
         image: `${import.meta.env.SITE}/twittercard.png`,
         imageAlt:
-          "Ray's cover image, with the text: Fullstack Web Developer and Software Engineer. Contact me at contact@rayhanadev.com.",
+          "Ray's cover image, with the text: Fullstack Web Developer and Software Engineer. Contact me at me@rayhanadev.com.",
         card: "summary_large_image",
-        site: "rayhanadev",
-        creator: "rayhanadev",
+        site: "@rayhanadev",
+        creator: "@rayhanadev",
       }}
     />
 
@@ -129,7 +137,7 @@ export interface Props {
       rel="alternate"
       type="application/rss+xml"
       title="RSS"
-      href="https://www.rayhanadev.com/feed.xml"
+      href={`${import.meta.env.SITE}/feed.xml`}
     />
 
     <meta name="author" content="Rayhan Noufal Arayilakath" />
@@ -137,6 +145,21 @@ export interface Props {
       name="keywords"
       content="ray, rayhan, noufal, arayilakath, rayhan noufal, rayhan arayilakath, rayhan noufal arayilakath, ray arayilakath, rayhanadev, furret, furret developer, furret.css, furret.dev, furret.codes, fullstack web, fullstack developer, fullstack, developer, software, software engineer, replit"
     />
+
+    {import.meta.env.PROD && (
+      <script
+        type="text/partytown"
+        async
+        src="https://www.googletagmanager.com/gtag/js?id="></script>
+      <script type="text/partytown">
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+        }
+        gtag("js", new Date());
+        gtag("config", "G-JSXSGNGYQF");
+      </script>
+    )}
 
     <ViewTransitions />
   </Head>

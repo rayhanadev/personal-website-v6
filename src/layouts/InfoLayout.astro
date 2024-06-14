@@ -98,7 +98,7 @@ export interface Props {
           siteName: "rayhanadev.com",
         },
         image: {
-          alt: "Ray's cover image, with the text: Fullstack Web Developer and Software Engineer. Contact me at contact@rayhanadev.com.",
+          alt: "Ray's cover image, with the text: Fullstack Web Developer and Software Engineer. Contact me at me@rayhanadev.com.",
           type: "image/png",
         },
       }}
@@ -108,7 +108,7 @@ export interface Props {
           twitter && twitter.description ? twitter.description : description,
         image: `${import.meta.env.SITE}/twittercard.png`,
         imageAlt:
-          "Ray's cover image, with the text: Fullstack Web Developer and Software Engineer. Contact me at contact@rayhanadev.com.",
+          "Ray's cover image, with the text: Fullstack Web Developer and Software Engineer. Contact me at me@rayhanadev.com.",
         card: "summary_large_image",
         site: "rayhanadev",
         creator: "rayhanadev",
@@ -120,7 +120,7 @@ export interface Props {
       rel="alternate"
       type="application/rss+xml"
       title="RSS"
-      href="https://www.rayhanadev.com/feed.xml"
+      href={`${import.meta.env.SITE}/feed.xml`}
     />
 
     <meta name="author" content="Rayhan Noufal Arayilakath" />
@@ -128,6 +128,21 @@ export interface Props {
       name="keywords"
       content="ray, rayhan, noufal, arayilakath, rayhan noufal, rayhan arayilakath, rayhan noufal arayilakath, ray arayilakath, rayhanadev, furret, furret developer, furret.css, furret.dev, furret.codes, fullstack web, fullstack developer, fullstack, developer, software, software engineer, replit"
     />
+    
+    {import.meta.env.PROD && (
+      <script
+      type="text/partytown"
+      async
+      src="https://www.googletagmanager.com/gtag/js?id="></script>
+      <script type="text/partytown">
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          dataLayer.push(arguments);
+          }
+        gtag("js", new Date());
+        gtag("config", "G-JSXSGNGYQF");
+      </script>
+    )}
 
     <ViewTransitions />
   </Head>

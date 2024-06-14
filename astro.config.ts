@@ -19,7 +19,11 @@ export default defineConfig({
       configFile: "./tailwind.config.ts",
       applyBaseStyles: false,
     }),
-    partytown(),
+    partytown({
+      config: {
+        forward: ["dataLayer.push"],
+      },
+    }),
     sitemap(),
     playformCompress({
       Logger: 1,

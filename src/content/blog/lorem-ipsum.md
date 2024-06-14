@@ -1,6 +1,9 @@
 ---
 title: lorem ipsum
 description: lorem ipsum dolor sit amet
+tags:
+  - lorem
+draft: true
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut lectus arcu bibendum at varius vel pharetra. Bibendum ut tristique et egestas quis ipsum suspendisse. Velit laoreet id donec ultrices tincidunt arcu non sodales neque.
