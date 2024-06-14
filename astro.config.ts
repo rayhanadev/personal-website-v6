@@ -6,7 +6,6 @@ import mdx from "@astrojs/mdx";
 import partytown from "@astrojs/partytown";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
-import robotsTxt from "astro-robots-txt";
 import playformCompress from "@playform/compress";
 
 import { schema } from "./env.ts";
@@ -22,11 +21,6 @@ export default defineConfig({
     }),
     partytown(),
     sitemap(),
-    robotsTxt({
-      host: "https://www.rayhanadev.com",
-      policy: [{ userAgent: "*", disallow: "/cdn-cgi/" }],
-      sitemap: "/sitemap.xml",
-    }),
     playformCompress({
       Logger: 1,
     }),

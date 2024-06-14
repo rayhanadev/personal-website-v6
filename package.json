@@ -21,7 +21,6 @@
     "astro": "^4.10.2",
     "astro-capo": "^0.0.1",
     "astro-og-canvas": "^0.5.0",
-    "astro-robots-txt": "^1.0.0",
     "astro-seo": "^0.8.4",
     "canvaskit-wasm": "^0.39.1",
     "dayjs": "^1.11.11",
