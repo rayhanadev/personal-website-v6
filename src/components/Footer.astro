@@ -1,0 +1,29 @@
+---
+export interface Props {};
+
+const links = [
+  { text: "x", href: "https://x.com/rayhanadev" },
+  { text: "github", href: "https://github.com/rayhanadev" },
+  { text: "linkedin", href: "https://linkedin.com/in/rayhanadev" },
+  { text: "me@rayhanadev.com", href: "mailto:me@rayhanadev.com" },
+];
+
+const {} = Astro.props;
+---
+<div class="flex flex-col items-start justify-start gap-5 w-[500px] mx-auto mt-auto">
+  <hr class="border-border w-full" />
+  <ul class="flex flex-row items-start justify-start gap-3.5 w-full ml-auto">
+    {links.map(({ text, href }) => (
+      <li>
+        <a
+          class="font-sans text-base leading-normal underline decoration-muted-foreground hover:decoration-foreground"
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {text}
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>
