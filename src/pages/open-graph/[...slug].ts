@@ -9,7 +9,7 @@ const pages = Object.fromEntries(entries.map(({ slug, data }) => [slug, data]));
 export const { getStaticPaths, GET } = OGImageRoute({
   param: "slug",
   pages,
-  getImageOptions: (path, page) => ({
+  getImageOptions: (_path, page) => ({
     title: page.title,
     description: page.description,
     logo: {
