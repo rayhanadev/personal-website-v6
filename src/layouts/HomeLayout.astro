@@ -130,10 +130,11 @@ export interface Props {
     
     {import.meta.env.PROD && (
       <script
-      type="text/partytown"
       async
+      is:inline
+      type="text/partytown"
       src="https://www.googletagmanager.com/gtag/js?id="></script>
-      <script type="text/partytown">
+      <script is:inline type="text/partytown">
         window.dataLayer = window.dataLayer || [];
         function gtag() {
           dataLayer.push(arguments);
