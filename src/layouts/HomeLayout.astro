@@ -89,7 +89,7 @@ export interface Props {
         basic: {
           type: "website",
           title: og && og.title ? og.title : title,
-          image: `${import.meta.env.SITE}/opengraphimage.png`,
+          image: `${import.meta.env.SITE}/opengraph.png`,
         },
         optional: {
           description: og && og.description ? og.description : description,
@@ -105,7 +105,7 @@ export interface Props {
         title: twitter && twitter.title ? twitter.title : title,
         description:
           twitter && twitter.description ? twitter.description : description,
-        image: `${import.meta.env.SITE}/twittercard.png`,
+        image: `${import.meta.env.SITE}/opengraph.png`,
         imageAlt:
           "Ray's cover image, with the text: Fullstack Web Developer and Software Engineer. Contact me at me@rayhanadev.com.",
         card: "summary_large_image",

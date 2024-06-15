@@ -97,7 +97,7 @@ export interface Props {
         basic: {
           type: "article",
           title: og && og.title ? og.title : `${title} | Ray Arayilakath`,
-          image: `${import.meta.env.SITE}/og/${slug}.png`,
+          image: `${import.meta.env.SITE}/open-graph/${slug}.png`,
         },
         optional: {
           description: og && og.description ? og.description : description,
@@ -105,7 +105,7 @@ export interface Props {
           siteName: "rayhanadev.com",
         },
         image: {
-          alt: "Ray's cover image, with the text: Fullstack Web Developer and Software Engineer. Contact me at me@rayhanadev.com.",
+          alt: `A cover image for a blog post by Ray. It is black and white with a logomark of the letter R on top. The post is titled ${title} and has the description ${description}.`,
           type: "image/png",
         },
         article: {
@@ -123,9 +123,9 @@ export interface Props {
             : `${title} | Ray Arayilakath`,
         description:
           twitter && twitter.description ? twitter.description : description,
-        image: `${import.meta.env.SITE}/twittercard.png`,
+        image: `${import.meta.env.SITE}/open-graph/${slug}.png`,
         imageAlt:
-          "Ray's cover image, with the text: Fullstack Web Developer and Software Engineer. Contact me at me@rayhanadev.com.",
+          `A cover image for a blog post by Ray. It is black and white with a logomark of the letter R on top. The post is titled ${title} and has the description ${description}.`,
         card: "summary_large_image",
         site: "@rayhanadev",
         creator: "@rayhanadev",
