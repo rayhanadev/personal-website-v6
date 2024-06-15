@@ -34,7 +34,7 @@ const data = (
       return dayjs(b.lastModified).utc().diff(dayjs(a.lastModified).utc());
     }
 
-    return a.data.draft ? 1 : -1;
+    return a.data.draft ? -1 : 1;
   });
 
 export const prerender = true;
