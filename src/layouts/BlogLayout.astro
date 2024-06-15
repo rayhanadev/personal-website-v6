@@ -165,10 +165,10 @@ export interface Props {
     <ViewTransitions />
   </Head>
   <body class="flex flex-col min-h-[850px] pt-16">
-    <h1 class="font-serif font-bold text-4xl leading-normal w-[500px] mx-auto">
+    <h1 class="font-serif font-bold text-4xl leading-normal w-[350px] md:w-[500px] mx-auto">
       {title}
     </h1>
-    <div class="flex flex-row items-start justify-between w-[500px] mx-auto">
+    <div class="flex flex-row items-start justify-between w-[350px] md:w-[500px] mx-auto">
       <time
         class="text-lg leading-normal text-zinc-400 italic"
         datetime={date.toString()}
@@ -177,7 +177,7 @@ export interface Props {
       <Link href="/blog">back</Link>
     </div>
     <main
-      class="prose prose-zinc flex flex-col items-start justify-start w-[500px] h-full mx-auto pt-16 min-h-16"
+      class="prose prose-zinc flex flex-col items-start justify-start w-[350px] md:w-[500px] mx-auto pt-16 min-h-16"
     >
       <slot />
     </main>

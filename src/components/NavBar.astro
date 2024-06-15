@@ -10,7 +10,9 @@ const {} = Astro.props;
 export interface Props {}
 ---
 
-<nav class="flex flex-row items-end justify-start w-[500px] mx-auto">
+<nav
+  class="flex flex-row items-end justify-start w-[350px] md:w-[500px] mx-auto"
+>
   <ul class="flex flex-row items-start justify-start gap-3.5 ml-auto">
     {
       links.map(({ text, href }) => {
